@@ -5,8 +5,33 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 class ScoreTable extends React.Component {
     render() {
+        let scores = this.props.scores;
+        let scorearray = Object.keys(scores).map(key => scores[key]);
+        scorearray = scorearray.sort((a, b) => {
+            return (b.score - a.score);
+        });
+        
+        let winner = false;
+        if(scorearray[0].score > scorearray[1].score) {
+            winner = true;
+        }
+
+        let tablerows = scorearray.map( (row, idx) => {
+            let winnerStyle = {};
+            if(winner && !idx) {
+                winnerStyle = {fontWeight: "bold", fontSize: "1.5em"};
+            }
+            return (
+                <TableRow key={idx}>
+                    <TableRowColumn style={winnerStyle}>{row.name}</TableRowColumn>
+                    <TableRowColumn style={winnerStyle}>{row.score}</TableRowColumn>
+                </TableRow>
+            );
+        });
+
         return (
             <MuiThemeProvider>
+                
                 <div className='row'>
                     <div className='col-sm-8 col-sm-offset-2'>
                         <Table selectable={false}>
@@ -17,22 +42,7 @@ class ScoreTable extends React.Component {
                                 </TableRow>
                             </TableHeader>
                             <TableBody displayRowCheckbox={false}>
-                                <TableRow>
-                                    <TableRowColumn>{this.props.scores.player1.name}</TableRowColumn>
-                                    <TableRowColumn>{this.props.scores.player1.score}</TableRowColumn>
-                                </TableRow>
-                                <TableRow>
-                                    <TableRowColumn>{this.props.scores.player2.name}</TableRowColumn>
-                                    <TableRowColumn>{this.props.scores.player2.score}</TableRowColumn>
-                                </TableRow>
-                                <TableRow>
-                                    <TableRowColumn>{this.props.scores.player3.name}</TableRowColumn>
-                                    <TableRowColumn>{this.props.scores.player3.score}</TableRowColumn>
-                                </TableRow>
-                                <TableRow>
-                                    <TableRowColumn>{this.props.scores.player4.name}</TableRowColumn>
-                                    <TableRowColumn>{this.props.scores.player4.score}</TableRowColumn>
-                                </TableRow>
+                                {tablerows}
                             </TableBody>
                         </Table>
                     </div>

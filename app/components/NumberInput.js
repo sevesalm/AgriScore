@@ -32,7 +32,7 @@ class NumberInput extends React.Component{
                     <h6 style={rowStyle}>{this.props.title}:</h6>
                 </div>
                 <div className='col-xs-7'>
-                    <TextField hintText="Enter number" value={this.state.value} onChange={this.handleChange} style={{width: "100%"}}/>
+                    <TextField hintText="Enter a number" value={this.state.value} onChange={this.handleChange} style={{width: "100%"}}/>
                 </div>
             </div>
         );

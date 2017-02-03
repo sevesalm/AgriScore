@@ -20,8 +20,9 @@ class App extends React.Component {
     }
 
     handleNewScore(item) {
-        let newState = this.state[item.player];
-        newState.score = item.score;
+        let newState = {};
+        newState[item.player] = this.state[item.player];
+        newState[item.player].score = item.score;
         this.setState(newState);
     }
 
