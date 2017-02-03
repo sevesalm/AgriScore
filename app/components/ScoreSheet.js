@@ -25,6 +25,10 @@ class ScoreSheet extends React.Component {
         this.getTotalScore = this.getTotalScore.bind(this);
     }
 
+    shouldComponentUpdate(nextProps, nextState) {
+        return false;
+    }
+
     handleNewScore(item) {
         let newState = {};
         newState[item.class] = item.score;
@@ -41,7 +45,6 @@ class ScoreSheet extends React.Component {
     }
 
     render() {
-        let totalScore = this.getTotalScore();
         return (
             <div>
                 <div className='row'>
@@ -95,11 +98,6 @@ class ScoreSheet extends React.Component {
                     </div>
                     <div className='col-sm-6 col-xs-12'>
                         <NumberInput title='Bonus points' class='bonus' multi={1} handleNewScore={this.handleNewScore}/>
-                    </div>
-                </div>
-                <div className='row center-xs'>
-                    <div className='col-sm'>
-                        <h2>Total score: {totalScore}</h2>
                     </div>
                 </div>
             </div>

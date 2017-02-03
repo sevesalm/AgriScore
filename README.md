@@ -11,3 +11,6 @@ AgriScore uses React library with ES6. The UI has been done using Material UI li
 1. npm install
 2. npm run start
 3. Go to: http://localhost:8080
+
+## Known issues
+- still learning React and trying different component hierarchies

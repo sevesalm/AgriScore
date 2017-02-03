@@ -18,9 +18,16 @@ class NumberInput extends React.Component{
             this.props.handleNewScore({class: this.props.class, score: this.props.multi * value});
         }
     }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        if(nextState.value != this.state.value)
+            return true;
+        return false;
+    }
+
     render() {
         return(
-            <div className="row">
+            <div className="row middle-xs">
                 <div className='col-xs-5'>
                     <h6 style={rowStyle}>{this.props.title}:</h6>
                 </div>

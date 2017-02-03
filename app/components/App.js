@@ -34,6 +34,11 @@ class App extends React.Component {
                             <div className='row'>
                                 <div className='col-sm-10 col-sm-offset-1 col-xs-12'>
                                     <ScoreSheet onChange={this.handleNewScore} player='player1' name={this.state.player1.name} />
+                                    <div className='row center-xs'>
+                                        <div className='col-sm'>
+                                            <h3>Total: {this.state.player1.score}</h3>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </Tab>
@@ -41,6 +46,12 @@ class App extends React.Component {
                             <div className='row'>
                                 <div className='col-sm-10 col-sm-offset-1 col-xs-12'>
                                     <ScoreSheet onChange={this.handleNewScore} player='player2' name={this.state.player2.name} />
+                                    <div className='row center-xs'>
+                                        <div className='col-sm'>
+                                            <h3>Total: {this.state.player2.score}</h3>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                         </Tab>
@@ -48,6 +59,12 @@ class App extends React.Component {
                             <div className='row'>
                                 <div className='col-sm-10 col-sm-offset-1 col-xs-12'>
                                     <ScoreSheet onChange={this.handleNewScore} player='player3' name={this.state.player3.name} />
+                                    <div className='row center-xs'>
+                                        <div className='col-sm'>
+                                            <h3>Total: {this.state.player3.score}</h3>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                         </Tab>
@@ -55,6 +72,12 @@ class App extends React.Component {
                             <div className='row'>
                                 <div className='col-sm-10 col-sm-offset-1 col-xs-12'>
                                     <ScoreSheet onChange={this.handleNewScore} player='player4' name={this.state.player4.name} />
+                                    <div className='row center-xs'>
+                                        <div className='col-sm'>
+                                            <h3>Total: {this.state.player4.score}</h3>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                         </Tab>

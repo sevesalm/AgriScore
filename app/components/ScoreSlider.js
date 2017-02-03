@@ -26,6 +26,12 @@ class ScoreSlider extends React.Component{
         this.handleChange = this.handleChange.bind(this);
     }
 
+    shouldComponentUpdate(nextProps, nextState) {
+        if(nextState.value != this.state.value)
+            return true;
+        return false;
+    }
+
     handleChange(e, value) {
         let score = -1;
         if(value > 0) {
@@ -47,6 +53,12 @@ class ScoreSliderB extends React.Component{
         super(props);
         this.state = {value: 0};
         this.handleChange = this.handleChange.bind(this);
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        if(nextState.value != this.state.value)
+            return true;
+        return false;
     }
 
     handleChange(e, value) {
