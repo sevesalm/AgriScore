@@ -27,62 +27,30 @@ class App extends React.Component {
     }
 
     render () {
+        let players = this.state;
+        let playerArray = Object.keys(players).map(key => players[key]);
+        let tabarray = playerArray.map((player, idx) => {
+            return(
+                <Tab label={player.name} key={idx}>
+                    <div className='row'>
+                        <div className='col-sm-10 col-sm-offset-1 col-xs-12'>
+                            <ScoreSheet onChange={this.handleNewScore} player={'player' + idx+1} name={player.name} />
+                            <div className='row center-xs'>
+                                <div className='col-sm'>
+                                    <h3>Total: {player.score}</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </Tab>
+            );
+        });
+
         return (
             <div>
                 <MuiThemeProvider>
                     <Tabs>
-                        <Tab label="Player 1" >
-                            <div className='row'>
-                                <div className='col-sm-10 col-sm-offset-1 col-xs-12'>
-                                    <ScoreSheet onChange={this.handleNewScore} player='player1' name={this.state.player1.name} />
-                                    <div className='row center-xs'>
-                                        <div className='col-sm'>
-                                            <h3>Total: {this.state.player1.score}</h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </Tab>
-                        <Tab label="Player 2" >
-                            <div className='row'>
-                                <div className='col-sm-10 col-sm-offset-1 col-xs-12'>
-                                    <ScoreSheet onChange={this.handleNewScore} player='player2' name={this.state.player2.name} />
-                                    <div className='row center-xs'>
-                                        <div className='col-sm'>
-                                            <h3>Total: {this.state.player2.score}</h3>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </Tab>
-                        <Tab label="Player 3" >
-                            <div className='row'>
-                                <div className='col-sm-10 col-sm-offset-1 col-xs-12'>
-                                    <ScoreSheet onChange={this.handleNewScore} player='player3' name={this.state.player3.name} />
-                                    <div className='row center-xs'>
-                                        <div className='col-sm'>
-                                            <h3>Total: {this.state.player3.score}</h3>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </Tab>
-                        <Tab label="Player 4" >
-                            <div className='row'>
-                                <div className='col-sm-10 col-sm-offset-1 col-xs-12'>
-                                    <ScoreSheet onChange={this.handleNewScore} player='player4' name={this.state.player4.name} />
-                                    <div className='row center-xs'>
-                                        <div className='col-sm'>
-                                            <h3>Total: {this.state.player4.score}</h3>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </Tab>
-
+                        {tabarray}
                         <Tab label="Summary" >
                             <ScoreTable scores={this.state} />
                         </Tab>
