@@ -28,35 +28,33 @@ class App extends React.Component {
 
     render () {
         let players = this.state;
-        let playerArray = Object.keys(players).map(key => players[key]);
-        let tabarray = playerArray.map((player, idx) => {
-            return(
-                <Tab label={player.name} key={idx}>
+        let tabarray = [];
+        for(let key in players) {
+            let tab = 
+                <Tab buttonStyle={{fontSize: 13}} label={players[key].name} key={tabarray.length}>
                     <div className='row'>
                         <div className='col-sm-10 col-sm-offset-1 col-xs-12'>
-                            <ScoreSheet onChange={this.handleNewScore} player={'player' + idx+1} name={player.name} />
+                            <ScoreSheet onChange={this.handleNewScore} player={key} />
                             <div className='row center-xs'>
                                 <div className='col-sm'>
-                                    <h3>Total: {player.score}</h3>
+                                    <h3>Total: {players[key].score}</h3>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </Tab>
-            );
-        });
+                </Tab>;
+            tabarray.push(tab);
+        }
 
         return (
-            <div>
-                <MuiThemeProvider>
-                    <Tabs>
-                        {tabarray}
-                        <Tab label="Summary" >
-                            <ScoreTable scores={this.state} />
-                        </Tab>
-                    </Tabs>
-                </MuiThemeProvider>
-            </div>
+            <MuiThemeProvider>
+                <Tabs>
+                    {tabarray}
+                    <Tab label="Summary" buttonStyle={{fontSize: 13}}>
+                        <ScoreTable scores={this.state} />
+                    </Tab>
+                </Tabs>
+            </MuiThemeProvider>
         );
     }
 }
