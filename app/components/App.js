@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {Tabs, Tab} from 'material-ui/Tabs';
-import ScoreSheet from './ScoreSheet';
+import {ScoreSheet, ScoreTotal} from './ScoreSheet';
 import ScoreTable from './ScoreTable';
 injectTapEventPlugin();
 
@@ -37,7 +37,7 @@ class App extends React.Component {
                             <ScoreSheet onChange={this.handleNewScore} player={key} />
                             <div className='row center-xs'>
                                 <div className='col-sm'>
-                                    <h3>Total: {players[key].score}</h3>
+                                    <ScoreTotal score = {players[key].score} />
                                 </div>
                             </div>
                         </div>

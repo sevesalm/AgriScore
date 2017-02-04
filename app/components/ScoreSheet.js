@@ -3,6 +3,19 @@ import {ScoreSlider, ScoreSliderB} from './ScoreSlider';
 import RoomSelect from './RoomSelect';
 import NumberInput from './NumberInput';
 
+class ScoreTotal extends React.Component {
+    shouldComponentUpdate(nextProps, nextState) {
+        if(nextProps.score != this.props.score) {
+            return true;
+        }
+        return false;
+    }
+
+    render() {
+        return(<h3>Total: {this.props.score}</h3>)
+    }
+}
+
 class ScoreSheet extends React.Component {
     constructor(props) {
         super(props);
@@ -105,4 +118,4 @@ class ScoreSheet extends React.Component {
     }
 }
 
-export default ScoreSheet;
+export {ScoreSheet, ScoreTotal};
