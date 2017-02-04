@@ -18,6 +18,7 @@ export default class NameDialog extends React.Component {
         this.handleOpen = this.handleOpen.bind(this);
         this.handleClose = this.handleClose.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.handleKeypress = this.handleKeypress.bind(this);
     }
 
     handleOpen() {
@@ -33,6 +34,12 @@ export default class NameDialog extends React.Component {
         this.props.onChange({player: this.props.player, name: value});
     }
 
+    handleKeypress(e) {
+        if (e.key === 'Enter') {
+              this.handleClose();
+        }
+    }
+
     render() {
         const actions = [
             <FlatButton label="Close" primary={true} keyboardFocused={true} onTouchTap={this.handleClose} />,
@@ -42,7 +49,7 @@ export default class NameDialog extends React.Component {
             <div>
                 <RaisedButton label="Edit name..." onTouchTap={this.handleOpen} primary={true} />
                 <Dialog title="Edit player name" actions={actions} modal={false} open={this.state.open} onRequestClose={this.handleClose} contentStyle={dialogStyle}>
-                    <TextField value={this.state.value} onChange={this.handleChange} id='name' />
+                    <TextField value={this.state.value} onChange={this.handleChange} id='name' onKeyPress={this.handleKeypress}/>
                 </Dialog>
             </div>
         );
