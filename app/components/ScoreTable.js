@@ -5,7 +5,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 class ScoreTable extends React.Component {
     render() {
-        let scorearray = this.props.scores.slice(0).sort((a, b) => {
+        let scorearray = this.props.players.slice(0).sort((a, b) => {
             return (b.score - a.score);
         });
 
