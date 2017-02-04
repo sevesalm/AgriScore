@@ -5,12 +5,10 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 class ScoreTable extends React.Component {
     render() {
-        let scores = this.props.scores;
-        let scorearray = Object.keys(scores).map(key => scores[key]);
-        scorearray = scorearray.sort((a, b) => {
+        let scorearray = this.props.scores.slice(0).sort((a, b) => {
             return (b.score - a.score);
         });
-        
+
         let winner = false;
         if(scorearray[0].score > scorearray[1].score) {
             winner = true;
@@ -31,7 +29,6 @@ class ScoreTable extends React.Component {
 
         return (
             <MuiThemeProvider>
-                
                 <div className='row'>
                     <div className='col-sm-8 col-sm-offset-2'>
                         <Table selectable={false}>

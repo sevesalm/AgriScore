@@ -62,7 +62,7 @@ class ScoreSheet extends React.Component {
             <div>
                 <div className='row'>
                     <div className='col-sm-6 col-xs-12'>
-                        <ScoreSlider handleNewScore={this.handleNewScore} title='Fields' class='fields' values={['0', '1', '2', '3', '4+']}/>
+                        <ScoreSlider handleNewScore={this.handleNewScore} title='Fields' class='fields' values={['0-1', '2', '3', '4', '5+']}/>
                     </div>
                     <div className='col-sm-6 col-xs-12'>
                         <ScoreSlider handleNewScore={this.handleNewScore} title='Pastures' class='pastures' values={['0', '1', '2', '3', '4+']}/>
@@ -99,7 +99,7 @@ class ScoreSheet extends React.Component {
                 </div>
                 <div className='row middle-sm'>
                     <div className='col-sm-6 col-xs-12'>
-                        <ScoreSliderB handleNewScore={this.handleNewScore} title='Rooms' class='rooms' offset={2} multi={1} values={['2', '3', '4', '5']}/>
+                        <ScoreSliderB handleNewScore={this.handleNewScore} title='Rooms' class='rooms' offset={2} multi={1} values={['2', '3', '4', '5', '6']}/>
                     </div>
                     <div className='col-sm-6 col-xs-12'>
                         <RoomSelect handleRoomChange={this.handleNewScore}/>

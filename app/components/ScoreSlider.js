@@ -1,19 +1,24 @@
 import React from 'react';
 import Slider from 'material-ui/Slider';
 
-var rowStyle = {
+var labelStyle = {
     marginTop: 16,
     marginBottom: 16
-}
+};
+
+var labelDigitStyle = {
+    minWidth: '1.5em', 
+    display: 'inline-block'
+};
 
 function MySlider(props) {
     return(
         <div className="row end-xs">
             <div className='col-xs-5'>
-                <h6 style={rowStyle}>{props.title}: <span style={{minWidth: '1.5em', display: 'inline-block'}}>{props.values[props.value]}</span></h6>
+                <h6 style={labelStyle}>{props.title}: <span style={labelDigitStyle}>{props.values[props.value]}</span></h6>
             </div>
             <div className='col-xs-7'>
-                <Slider step={1} value={0} min={0} max={props.values.length-1} value={props.value} onChange={props.handleChange} sliderStyle={rowStyle}/>
+                <Slider step={1} value={0} min={0} max={props.values.length-1} value={props.value} onChange={props.handleChange} sliderStyle={labelStyle}/>
             </div>
         </div>
     )

@@ -3,7 +3,7 @@ import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 
 var rowStyle = {
     float: 'right',
-    minWidth: '5.6em'
+    marginRight: '1.7em'
 }
 
 class RoomSelect extends React.Component{

@@ -7,51 +7,53 @@ import {ScoreSheet, ScoreTotal} from './ScoreSheet';
 import ScoreTable from './ScoreTable';
 injectTapEventPlugin();
 
+var tabFontStyle = {fontSize: 13};
+
 class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            player1: {name: 'Player 1', score: -1},
-            player2: {name: 'Player 2', score: -1},
-            player3: {name: 'Player 3', score: -1},
-            player4: {name: 'Player 4', score: -1}
+            scores: [
+                {name: 'Player 1', score: -1},
+                {name: 'Player 2', score: -1},
+                {name: 'Player 3', score: -1},
+                {name: 'Player 4', score: -1}
+            ]
         };
         this.handleNewScore = this.handleNewScore.bind(this);
     }
 
     handleNewScore(item) {
-        let newState = {};
-        newState[item.player] = this.state[item.player];
+        let newState = this.state.scores;
         newState[item.player].score = item.score;
         this.setState(newState);
     }
 
     render () {
-        let players = this.state;
-        let tabarray = [];
-        for(let key in players) {
-            let tab = 
-                <Tab buttonStyle={{fontSize: 13}} label={players[key].name} key={tabarray.length}>
+        let scores = this.state.scores;
+        let tabarray = scores.map((item, idx) => {
+            return(
+                <Tab buttonStyle={tabFontStyle} label={item.name} key={idx}>
                     <div className='row'>
                         <div className='col-sm-10 col-sm-offset-1 col-xs-12'>
-                            <ScoreSheet onChange={this.handleNewScore} player={key} />
+                            <ScoreSheet onChange={this.handleNewScore} player={idx} />
                             <div className='row center-xs'>
                                 <div className='col-sm'>
-                                    <ScoreTotal score = {players[key].score} />
+                                    <ScoreTotal score = {item.score} />
                                 </div>
                             </div>
                         </div>
                     </div>
-                </Tab>;
-            tabarray.push(tab);
-        }
+                </Tab>
+            );
+        });
 
         return (
             <MuiThemeProvider>
                 <Tabs>
                     {tabarray}
-                    <Tab label="Summary" buttonStyle={{fontSize: 13}}>
-                        <ScoreTable scores={this.state} />
+                    <Tab label="Summary" buttonStyle={tabFontStyle}>
+                        <ScoreTable scores={this.state.scores} />
                     </Tab>
                 </Tabs>
             </MuiThemeProvider>
